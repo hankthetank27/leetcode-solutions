@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "target": "es2015",
     "module": "CommonJS",
     "jsx": "react",
     "noImplicitAny": true,
