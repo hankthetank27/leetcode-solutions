@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "jsx": "react",
+    "noImplicitAny": true,
+    "esModuleInterop": true
+  },
+  "include": [
+      "solutions/**/*"
+  ]
+}
