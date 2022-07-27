@@ -38,6 +38,11 @@ Notice that the answer must be a substring, "pwke" is a subsequence and not a su
 //   return res;
 // };
 
+//initalized a left side pointer to track window size
+//loop string and store the last seen index of each charater (this step is done after checking the following step but is put here for clarity)
+//if last seen charater is index is greater than or equal to current left of window,
+  //the window contains the charater so move the left pointer to the location of the last seen pointer (+1)
+//keep track of largest size of of windows, comparing max between highest, and current window.
 function lengthOfLongestSubstring(s: string): number {
   let result = 0;
   let left = 0;
