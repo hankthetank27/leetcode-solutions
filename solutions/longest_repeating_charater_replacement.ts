@@ -22,14 +22,14 @@
 function characterReplacement(s: string, k: number): number {
   let res = 0;
   let left = 0;
-  const charSet: Record<string, number> = {};
+  const charFreq: Record<string, number> = {};
 
   for (let i = 0; i < s.length; i++) {
 
-    charSet[s[i]] = 1 + (charSet[s[i]] || 0);
+    charFreq[s[i]] = 1 + (charFreq[s[i]] || 0);
 
-    while ((i - left + 1) - Math.max(...Object.values(charSet)) > k){
-      charSet[s[left]]--;
+    while ((i - left + 1) - Math.max(...Object.values(charFreq)) > k){
+      charFreq[s[left]]--;
       left++;
     }
 
@@ -40,20 +40,20 @@ function characterReplacement(s: string, k: number): number {
 
 
 // //optimized solution~~~
- // //weird unintutive check on maxFreq
+//   //slightly unintuitve check for maxFreq; it doesnt update when the max freq is actually lowered.
 // function characterReplacement(s: string, k: number): number {
 //   let res = 0;
 //   let left = 0;
 //   let maxFreq = 0;
-//   const charSet: Record<string, number> = {};
+//   const charFreq: Record<string, number> = {};
 
 //   for (let i = 0; i < s.length; i++) {
 
-//     charSet[s[i]] = 1 + (charSet[s[i]] || 0);
-//     maxFreq = Math.max(maxFreq, charSet[s[i]]);
+//     charFreq[s[i]] = 1 + (charFreq[s[i]] || 0);
+//     maxFreq = Math.max(maxFreq, charFreq[s[i]]);
 
 //     while ((i - left + 1) - maxFreq > k){
-//       charSet[s[left]]--;
+//       charFreq[s[left]]--;
 //       left++;
 //     }
 
