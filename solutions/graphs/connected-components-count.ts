@@ -32,8 +32,8 @@ const connectedComponentsCount = (graph: Graph): number => {
 const dfsTraversal = (graph: Graph, node: string, visited: Set<string>): boolean => {
   if (visited.has(node)) return false;
   visited.add(node);
-  for (let value of graph[node]){
-    dfsTraversal(graph, String(value), visited);
+  for (let edge of graph[node]){
+    dfsTraversal(graph, String(edge), visited);
   }
   return true;
 };
@@ -49,3 +49,6 @@ const graph = {
 }
 
 console.log(connectedComponentsCount(graph)) // 2
+
+
+module.exports = {}
