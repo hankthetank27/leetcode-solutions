@@ -30,7 +30,7 @@ function numIslands(grid: string[][]): number {
   let result = 0;
   const visited: Set<string> = new Set();
   for (let r = 0; r < grid.length; r++) {
-    for (let c = 0; c < grid[r].length; c++ ) {
+    for (let c = 0; c < grid[r].length; c++) {
       if (dfsTraversal(grid, r, c, visited) === true) result++;
     }
   }

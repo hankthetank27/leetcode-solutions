@@ -19,31 +19,31 @@
 */
 
 function search(nums: number[], target: number): number {
-  
-  function recurse(start: number, end: number): number { 
-    if (end < start) return -1;
-    
-    const mid = start + Math.floor((end - start) / 2);
-    
-    if (nums[mid] === target) return mid;
-    if (nums[mid] > target) return recurse(start, mid - 1);
-    if (nums[mid] < target) return recurse(mid + 1, end);
+  let left = 0;
+  let right = nums.length - 1;
+  while(left <= right) {
+    const mid = left + Math.floor((right - left) / 2);
+    if (target === nums[mid]) return mid;
+    if (target > nums[mid]) left = mid + 1;
+    if (target < nums[mid]) right = mid - 1;
   }
-  
-  return recurse(0, nums.length - 1);
+  return -1;
 };
+
 
 
 // recusive solution
 
 // function search(nums: number[], target: number): number {
-//   let start = 0;
-//   let end = nums.length - 1;
-//   while (end >= start){
-//     const mid = start + Math.floor((end - start) / 2);
+//   function recurse(start: number, end: number): number { 
+//     if (end < start) return -1;  
+//     const mid = start + Math.floor((end - start) / 2);   
 //     if (nums[mid] === target) return mid;
-//     if (nums[mid] > target) end = mid - 1;
-//     if (nums[mid] < target) start = mid + 1;
+//     if (nums[mid] > target) return recurse(start, mid - 1);
+//     if (nums[mid] < target) return recurse(mid + 1, end);
 //   }
-//   return -1
+//   return recurse(0, nums.length - 1);
 // };
+
+
+
