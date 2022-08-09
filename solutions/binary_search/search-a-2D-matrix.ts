@@ -36,7 +36,7 @@ function searchMatrix(matrix: number[][], target: number): boolean {
   return false;
 };
 
-function searchArray(array: number[], target: number) {
+function searchArray(array: number[], target: number): boolean {
   let left = 0;
   let right = array.length - 1;
   while(left <= right) {
