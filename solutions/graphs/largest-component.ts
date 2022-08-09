@@ -53,3 +53,5 @@ const graph = largestComponent({
   7: ['6', '8'],
   8: ['9', '7', '2']
 })
+
+export {};

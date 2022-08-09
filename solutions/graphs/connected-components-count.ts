@@ -16,10 +16,6 @@ connectedComponentsCount({
 
 type Graph = Record<string, number[]>;
 
-// interface Graph {
-//   [x: string] : number[];
-// }
-
 const connectedComponentsCount = (graph: Graph): number => {
   const visited: Set<string> = new Set();
   let count = 0;
@@ -51,4 +47,4 @@ const graph = {
 console.log(connectedComponentsCount(graph)) // 2
 
 
-module.exports = {}
+export {};
