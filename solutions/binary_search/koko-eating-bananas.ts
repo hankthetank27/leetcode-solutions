@@ -55,6 +55,7 @@ function minEatingSpeed(piles: number[], h: number): number {
 };
 
 
+
 //brute force
 // function minEatingSpeed(piles: number[], h: number): number {
 //   const maxVal = piles.reduce((acc, cur) => Math.max(acc, cur));
