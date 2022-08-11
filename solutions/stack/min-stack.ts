@@ -34,10 +34,9 @@ minStack.getMin(); // return -2
 */
 
 class MinStack {
-  items: Array<Record<string, number>>;
-  min: number;
+  stack: Array<Record<string, number>>;
   constructor() {
-    this.items = [];
+    this.stack = [];
   }
 
   push(val: number): void {
@@ -45,21 +44,21 @@ class MinStack {
       value: val,
       min: val
     }
-    if (this.items.length){
-      node.min = Math.min(this.items[this.items.length - 1].min, val);
+    if (this.stack.length){
+      node.min = Math.min(this.stack[this.stack.length - 1].min, val);
     } 
-    this.items.push(node);
+    this.stack.push(node);
   }
 
   pop(): void {
-    this.items.pop();
+    this.stack.pop();
   }
 
   top(): number {
-    return this.items[this.items.length - 1].value;
+    return this.stack[this.stack.length - 1].value;
   }
 
   getMin(): number {
-    return this.items[this.items.length - 1].min;
+    return this.stack[this.stack.length - 1].min;
   }
 }
