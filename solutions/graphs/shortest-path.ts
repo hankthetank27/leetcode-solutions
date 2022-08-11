@@ -51,16 +51,16 @@ interface Graph {
 const shortestPath = (edges: string[][], nodeA: string, nodeB: string) => {
   const graph: Graph = makeGraph(edges);
   const visited: Set<string> = new Set();
-  const queue = [{node: nodeA, steps: 0}];
+  const queue = [ {node: nodeA, steps: 0} ];
   
   while (queue.length) {
-    const {node, steps} = queue.shift();
+    const { node, steps } = queue.shift();
     if (node === nodeB) return steps;
     visited.add(node);
     
     for (let next of graph[node]){
       if (!visited.has(next)){
-        queue.push({node: next, steps: steps + 1});
+        queue.push( {node: next, steps: steps + 1} );
       } 
     }
   }
