@@ -40,19 +40,18 @@ function checkInclusion(s1: string, s2: string): boolean {
       currentWord[s2[left]]--;
       left++;
     };  
-
-    //would normally keep outside outer function def
-    function match (targetWord: Record<string, number>, currentWord: Record<string, number>) {
-      let res = true;
-      for (let char in targetWord) {
-        if (currentWord[char] !== targetWord[char]) res = false;
-      };
-      return res
-    };
-
+    
     if (match(targetWord, currentWord)) return true;
-      
+    
   };
   return false;
 };
 
+
+function match (targetWord: Record<string, number>, currentWord: Record<string, number>) {
+  let res = true;
+  for (let char in targetWord) {
+    if (currentWord[char] !== targetWord[char]) res = false;
+  };
+  return res
+};
