@@ -36,3 +36,5 @@ function invertTree(root: TreeNode | null): TreeNode | null {
   if (root.right) invertTree(root.right);
   return root;
 };
+
+export {};
