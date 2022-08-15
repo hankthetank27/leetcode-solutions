@@ -57,11 +57,11 @@ class Node {
 }
 
 //DFS
-function cloneGraph(node: Node | null, visited: Record<string, Node> = {}): Node | null {
+function cloneGraph(node: Node | null, visited: Map<number, Node> = new Map): Node | null {
   if (!node) return node;
-  if (visited[node.val]) return visited[node.val];
+  if (visited.has(node.val)) return visited.get(node.val);
   const newNode = new Node(node.val);
-  visited[newNode.val] = newNode;
+  visited.set(newNode.val, newNode);
   for (const n of node.neighbors){
     newNode.neighbors.push(cloneGraph(n, visited))
   }
