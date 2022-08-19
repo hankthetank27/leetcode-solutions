@@ -3,7 +3,7 @@
 
   An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
 
-  
+
 
   Example 1:
 
@@ -22,23 +22,23 @@
 */
 
 function groupAnagrams(strs: string[]): string[][] {
-  const map: Record<string, string[]> = {};
-  for (let word of strs) {
-    const sorted = [...word].sort().join('');
-    map[sorted] ? map[sorted].push(word) : map[sorted] = [word];
-  }
-  return Object.values(map);
+    const map: Record<string, string[]> = {};
+    for (let word of strs) {
+        const sorted = [...word].sort().join('');
+        map[sorted] ? map[sorted].push(word) : map[sorted] = [word];
+    }
+    return Object.values(map);
 }
 
 
 // function groupAnagrams(strs: string[]): string[][] {
 //   //make anagram key for each word, being an object with number of times each letter occurs in word
 //   const keys: Record <string, Record<string, number>> = {};
-//   const resultObj: Record <string, string[]> = {}; 
-  
+//   const resultObj: Record <string, string[]> = {};
+
 //   strs.forEach(word => {
 //     for (let key of Object.keys(keys)) {
-//       if (isAnagram(word, keys[key])) return resultObj[key].push(word);   
+//       if (isAnagram(word, keys[key])) return resultObj[key].push(word);
 //     }
 //     resultObj[word] = [word];
 //     return keys[word] = makeKey(word);

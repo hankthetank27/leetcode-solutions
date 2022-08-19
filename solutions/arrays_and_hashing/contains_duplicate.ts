@@ -20,10 +20,10 @@ Output: true
 */
 
 function containsDuplicate(nums: number[]): boolean {
-  const cache: Record<string, boolean> = {};
-  for (let i = 0; i < nums.length; i++){
-    if (cache[nums[i]]) return true;
-    cache[nums[i]] = true
-  }
-  return false;
+    const cache: Record<string, boolean> = {};
+    for (let i = 0; i < nums.length; i++) {
+        if (cache[nums[i]]) return true;
+        cache[nums[i]] = true
+    }
+    return false;
 };

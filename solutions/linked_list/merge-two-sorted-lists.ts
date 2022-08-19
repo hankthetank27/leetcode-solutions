@@ -37,15 +37,15 @@ class ListNode {
 }
 
 function mergeTwoLists(list1: ListNode | null, list2: ListNode | null): ListNode | null {
-  if (!list1 && !list2) return null;
-  if (list1?.val <= list2?.val || !list2){
-      list1.next = mergeTwoLists(list1.next, list2);
-      return list1;
-  };
-  if (list2?.val < list1?.val || !list1){
-      list2.next = mergeTwoLists(list1, list2.next);
-      return list2;
-  };
+    if (!list1 && !list2) return null;
+    if (list1?.val <= list2?.val || !list2){
+        list1.next = mergeTwoLists(list1.next, list2);
+        return list1;
+    };
+    if (list2?.val < list1?.val || !list1){
+        list2.next = mergeTwoLists(list1, list2.next);
+        return list2;
+    };
 };
 
 const list1 = new ListNode(1, new ListNode(2, new ListNode(4)));
