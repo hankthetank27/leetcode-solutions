@@ -50,21 +50,24 @@ Output: 0
 
 //instead of using Set to track visited indicies, set value to 0 once visited.
 function maxAreaOfIsland(grid: number[][]): number {
-  let maxArea = 0;
-  for (let r = 0; r < grid.length; r++){
-      for (let c = 0; c < grid[r].length; c++){
-          if (grid[r][c] === 1) maxArea = Math.max(maxArea, dfsCount(grid, r, c));
-      }
-  }
+    let maxArea = 0;
+    for (let r = 0; r < grid.length; r++){
+        for (let c = 0; c < grid[r].length; c++){
+            if (grid[r][c] === 1) maxArea = Math.max(maxArea, dfsCount(grid, r, c));
+        }
+    }
   return maxArea;
 };
 
 function dfsCount(grid: number[][], r: number, c: number){
-  grid[r][c] = 0;
-  let size = 1;
-  if (grid[r+1]?.[c] === 1) size += dfsCount(grid, r+1, c);
-  if (grid[r-1]?.[c] === 1) size += dfsCount(grid, r-1, c);
-  if (grid[r]?.[c+1] === 1) size += dfsCount(grid, r, c+1);
-  if (grid[r]?.[c-1] === 1) size += dfsCount(grid, r, c-1);
-  return size;
+    grid[r][c] = 0;
+    let size = 1;
+    if (grid[r+1]?.[c] === 1) size += dfsCount(grid, r+1, c);
+    if (grid[r-1]?.[c] === 1) size += dfsCount(grid, r-1, c);
+    if (grid[r]?.[c+1] === 1) size += dfsCount(grid, r, c+1);
+    if (grid[r]?.[c-1] === 1) size += dfsCount(grid, r, c-1);
+    return size;
 };
+
+
+export {};
