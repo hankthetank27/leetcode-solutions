@@ -28,7 +28,7 @@ function topKFrequent(nums: number[], k: number): number[] {
     for (const key in map) bucket[map[key] - 1].push(key);
     
     let counter = bucket.length - 1;
-    while(res.length < k){
+    while (res.length < k){
         for (const el of bucket[counter]){
             if (res.length < k) res.push(Number(el));
             else break;
@@ -38,6 +38,6 @@ function topKFrequent(nums: number[], k: number): number[] {
     return res;
 };
 
-console.log(topKFrequent([12, 12, 12, 12, -1, 1, 3, -1, 7, 12, 12], 1));
+console.log(topKFrequent([-1, 1, 3, -1, 7, 12, 12], 2));
 
 export {};
