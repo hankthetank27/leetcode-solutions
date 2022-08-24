@@ -62,5 +62,5 @@ class Solution:
                     right -= 1
                 elif sum < 0:
                     left += 1
-                    
+                            
         return result
