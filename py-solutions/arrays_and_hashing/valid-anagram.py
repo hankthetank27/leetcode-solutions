@@ -48,7 +48,7 @@ class Solution:
         }
 
         for key, val in map.items():
-            print(f'{key}, {val} im tesing jamies computer too')
+            print(f'{key}, {val}')
 
 test = Solution()
 test.testMap()
