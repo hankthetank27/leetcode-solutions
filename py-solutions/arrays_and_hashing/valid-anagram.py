@@ -39,3 +39,17 @@ class Solution:
             else:
                 return False
         return True
+
+    def testMap(self, ):
+        map = {
+            'a' : 10,
+            'b' : 11,
+            'c' : 12
+        }
+
+        for key, val in map.items():
+            print(f'{key}, {val}')
+
+test = Solution()
+test.testMap()
+print(test.isAnagram('asdf', 'fdsa'))
