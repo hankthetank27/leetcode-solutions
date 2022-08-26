@@ -24,7 +24,7 @@ function topKFrequent(nums: number[], k: number): number[] {
     const res: Array<number> = [];
     const bucket: Array<Array<string>> = Array.from({length:nums.length}, () => []);
 
-    for (const num of nums) map[num] = 1 + (map[num] || 0);
+    for (const num of nums) map[num] = 1 + (map[num] || 0); 
     for (const key in map) bucket[map[key] - 1].push(key);
     
     let counter = bucket.length - 1;
