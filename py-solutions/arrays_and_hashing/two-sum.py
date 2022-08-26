@@ -34,6 +34,8 @@
 #     -109 <= target <= 109
 #     Only one valid answer exists.
 
+from collections import deque
+import heapq
 from typing import List
 
 class Solution:
@@ -43,3 +45,14 @@ class Solution:
             if target - num in map:
                 return [map[target - num], i]
             map[num] = i
+
+# testing queue and heap
+    def test(self):
+        q = deque([1])
+        h = []
+        heapq.heapify(h)
+        s = set([1,2,3])
+        return h
+
+
+print(Solution().test())
