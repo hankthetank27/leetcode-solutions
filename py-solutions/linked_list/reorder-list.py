@@ -62,6 +62,7 @@ class Solution:
             prev = curr
             curr = temp
 
+        # merge lists
         rev = prev
         while rev:
             h_temp = head.next
