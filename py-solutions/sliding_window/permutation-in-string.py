@@ -30,7 +30,7 @@ class Solution:
         word_map = {}
         
         for char in s1:
-            word_map[char] = word_map.setdefault(char, 0) + 1
+            word_map[char] = word_map.get(char, 0) + 1
         
         count = len(s1)
         left = 0
@@ -38,13 +38,17 @@ class Solution:
         for right, rchar in enumerate(s2):
             lchar = s2[left]
             
+            # handle right
             if rchar in word_map:
-                if word_map[rchar] > 0: count -= 1 
+                # word does not need more of char
+                if word_map[rchar] > 0: count -= 1
                 word_map[rchar] -= 1
                              
-            
+            # check window size before removing chars from word
             if right - left == len(s1):
+                # handle left
                 if lchar in word_map:
+                    # char is already in word
                     if word_map[lchar] >= 0: count += 1
                     word_map[lchar] += 1
                 left += 1
