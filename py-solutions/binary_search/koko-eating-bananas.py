@@ -50,9 +50,7 @@ class Solution:
         right = max(piles)
         
         while left <= right:
-            
             speed = (left + right) // 2 
-            
             if timeToEat(speed) > h:
                 left = speed + 1
             else:
