@@ -36,6 +36,18 @@ from typing import List
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         
+        res = [1]
+        for i in range(1, len(nums)):
+            res.append(res[i - 1] * nums[i - 1])
+        
+        postfix = 1
+        for i in range(len(res)):
+            j = len(res) - 1 - i
+            res[j] = postfix * res[j]
+            postfix = postfix * nums[j]
+            
+        return res
+        
 # WITH EXTRA SPACE SOLUTION
 
 #         prefix = []
@@ -63,16 +75,4 @@ class Solution:
 #                 res.append(prefix[i - 1] * postfix[i + 1])
 #         return res
 
-        
-        res = [1]
-        for i in range(1, len(nums)):
-            res.append(res[i - 1] * nums[i - 1])
-        
-        postfix = 1
-        for i in range(len(res)):
-            j = len(res) - 1 - i
-            res[j] = postfix * res[j]
-            postfix = postfix * nums[j]
-            
-        return res
                 
