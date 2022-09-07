@@ -1,7 +1,7 @@
-# 235. Lowest Common Ancestor of a Binary Search Tree
-# Easy
+# 236. Lowest Common Ancestor of a Binary Tree
+# Medium
 
-# Given a binary search tree (BST), find the lowest common ancestor (LCA) node of two given nodes in the BST.
+# Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.
 
 # According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself).”
 
@@ -9,20 +9,20 @@
 
 # Example 1:
 
-# Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8
-# Output: 6
-# Explanation: The LCA of nodes 2 and 8 is 6.
+# Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
+# Output: 3
+# Explanation: The LCA of nodes 5 and 1 is 3.
 
 # Example 2:
 
-# Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4
-# Output: 2
-# Explanation: The LCA of nodes 2 and 4 is 2, since a node can be a descendant of itself according to the LCA definition.
+# Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4
+# Output: 5
+# Explanation: The LCA of nodes 5 and 4 is 5, since a node can be a descendant of itself according to the LCA definition.
 
 # Example 3:
 
-# Input: root = [2,1], p = 2, q = 1
-# Output: 2
+# Input: root = [1,2], p = 1, q = 2
+# Output: 1
 
  
 
@@ -32,8 +32,7 @@
 #     -109 <= Node.val <= 109
 #     All Node.val are unique.
 #     p != q
-#     p and q will exist in the BST.
-
+#     p and q will exist in the tree.
 
 # Definition for a binary tree node.
 class TreeNode:
@@ -42,27 +41,19 @@ class TreeNode:
         self.left = None
         self.right = None
 
-# searches for at what point the tree branches diverge, and returns node.
-    #optimal solution
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        if p.val < root.val and q.val < root.val:
-            return self.lowestCommonAncestor(root.left, p, q)
-        elif p.val > root.val and q.val > root.val:
-            return self.lowestCommonAncestor(root.right, p, q)
-        else:
+        if root == p or root == q:
             return root
-
-# traveses till both nodes are found
-class Solution2:
-    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        left_target = min(p.val, q.val)
-        right_target = max(p.val, q.val)
+        if root == None:
+            return None
         
-        if left_target > root.val:
-            return self.lowestCommonAncestor(root.right, p, q)
-        elif right_target < root.val:
-            return self.lowestCommonAncestor(root.left, p, q)
-        else:
+        left = self.lowestCommonAncestor(root.left, p, q) 
+        right = self.lowestCommonAncestor(root.right, p, q)
+        
+        if left and right:
             return root
-            
+        if left:
+            return left
+        if right:
+            return right
