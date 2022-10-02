@@ -53,8 +53,7 @@
           col < 0 ||
           row >= ROWS ||
           col >= COLS ||
-          word[idx] !== board[row][col]
-          ){
+          word[idx] !== board[row][col]){
           return false;
       };
       
