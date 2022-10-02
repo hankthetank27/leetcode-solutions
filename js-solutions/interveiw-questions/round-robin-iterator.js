@@ -5,13 +5,13 @@ class RoundRobin {
     this.q = new Queue(lists);
   }
 
-  next(){
+  next() {
     if (!this.q.hasEntries()) return undefined;
 
     const current = this.q.qdequeue();
     const value = current.shift();
     if (current.length) this.q.qpush(current);
-    
+
     return value;
   }
 }
@@ -32,5 +32,3 @@ console.log(rr.next())
 console.log(rr.next())
 console.log(rr.next())
 console.log(rr.next())
-
-
