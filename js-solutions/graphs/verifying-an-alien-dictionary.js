@@ -5,7 +5,7 @@
 
 // Given a sequence of words written in the alien language, and the order of the alphabet, return true if and only if the given words are sorted lexicographically in this alien language.
 
- 
+
 
 // Example 1:
 
@@ -31,30 +31,30 @@
  * @param {string} order
  * @return {boolean}
  */
- var isAlienSorted = function(words, order) {
+var isAlienSorted = function (words, order) {
   const orderMap = {};
-  for (let i = 0; i < order.length; i++){
-      orderMap[order[i]] = i;
+  for (let i = 0; i < order.length; i++) {
+    orderMap[order[i]] = i;
   };
-  
+
   let prevWord = words[0];
   for (const currWord of words) {
-      if (!validateOrder(currWord, prevWord, orderMap)) return false;
-      prevWord = currWord;
+    if (!validateOrder(currWord, prevWord, orderMap)) return false;
+    prevWord = currWord;
   };
   return true;
 };
 
 const validateOrder = (currWord, prevWord, orderMap) => {
   if (currWord === prevWord) return true;
-  
+
   let i = 0;
-  while (currWord[i] == prevWord[i]){
-      i++;
-      if (i >= currWord.length) return false;
+  while (currWord[i] == prevWord[i]) {
+    i++;
+    if (i >= currWord.length) return false;
   };
-  
+
   if (orderMap[currWord[i]] < orderMap[prevWord[i]]) return false;
-  
+
   return true;
 };

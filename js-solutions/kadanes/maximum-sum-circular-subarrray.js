@@ -7,7 +7,7 @@
 
 // A subarray may only include each element of the fixed buffer nums at most once. Formally, for a subarray nums[i], nums[i + 1], ..., nums[j], there does not exist i <= k1, k2 <= j with k1 % n == k2 % n.
 
- 
+
 
 // Example 1:
 
@@ -27,7 +27,7 @@
 // Output: -2
 // Explanation: Subarray [-2] has maximum sum -2.
 
- 
+
 
 // Constraints:
 
@@ -39,15 +39,15 @@
  * @param {number[]} nums
  * @return {number}
  */
- var maxSubarraySumCircular = function(nums) {
+var maxSubarraySumCircular = function (nums) {
   let total = 0, currMax = 0, currMin = 0, maxSum = nums[0], minSum = nums[0];
-  
+
   for (const num of nums) {
-      total += num;
-      currMax = Math.max(currMax, 0) + num;
-      maxSum = Math.max(currMax, maxSum);
-      currMin = Math.min(currMin, 0) + num;
-      minSum = Math.min(currMin, minSum);
+    total += num;
+    currMax = Math.max(currMax, 0) + num;
+    maxSum = Math.max(currMax, maxSum);
+    currMin = Math.min(currMin, 0) + num;
+    minSum = Math.min(currMin, minSum);
   }
   return maxSum > 0 ? Math.max(maxSum, total - minSum) : maxSum;
 };

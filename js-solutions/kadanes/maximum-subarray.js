@@ -5,7 +5,7 @@
 
 // A subarray is a contiguous part of an array.
 
- 
+
 
 // Example 1:
 
@@ -23,7 +23,7 @@
 // Input: nums = [5,4,-1,7,8]
 // Output: 23
 
- 
+
 
 // Constraints:
 
@@ -34,14 +34,14 @@
  * @param {number[]} nums
  * @return {number}
  */
- var maxSubArray = function(nums) {
+var maxSubArray = function (nums) {
   let maxSum = -Infinity;
   let currSum = 0;
-  
-  for (const num of nums){
-      currSum = Math.max(currSum, 0) + num;
-      maxSum = Math.max(currSum, maxSum);
+
+  for (const num of nums) {
+    currSum = Math.max(currSum, 0) + num;
+    maxSum = Math.max(currSum, maxSum);
   }
-  
+
   return maxSum
 };
