@@ -95,8 +95,8 @@ const shortestDistance = function (grid) {
 
 
   let numBuildings = 0;
-  const distances = new Array(ROWS).fill(0).map(arr => new Array(COLS).fill(0));
-  const reachable = new Array(ROWS).fill(0).map(arr => new Array(COLS).fill(0));
+  const distances = new Array(ROWS).fill([]).map(arr => new Array(COLS).fill(0));
+  const reachable = new Array(ROWS).fill([]).map(arr => new Array(COLS).fill(0));
 
   for (let r = 0; r < ROWS; r++) {
     for (let c = 0; c < COLS; c++) {

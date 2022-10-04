@@ -37,29 +37,36 @@
  */
 var wallsAndGates = function (rooms) {
   const ROWS = rooms.length, COLS = rooms[0].length, INF = 2147483647;
+  const directions = [[1, 0], [-1, 0], [0, 1], [0, -1]];
   const queue = [];
 
   const bfs = (queue) => {
-    const directions = [[1, 0], [-1, 0], [0, 1], [0, -1]];
 
+    let steps = 0;
     while (queue.length) {
-      const [r, c] = queue.shift();
 
-      for (const dir of directions) {
-        const nr = r + dir[0];
-        const nc = c + dir[1];
-        if (
-          nr < 0 ||
-          nc < 0 ||
-          nr === ROWS ||
-          nc === COLS ||
-          rooms[nr][nc] !== INF
-        ) continue;
+      steps++;
+      const qlen = queue.length;
 
-        rooms[nr][nc] = rooms[r][c] + 1;
-        queue.push([nr, nc]);
+      for (let i = 0; i < qlen; i++) {
+
+        const [r, c] = queue.shift();
+
+        for (const dir of directions) {
+          const nr = r + dir[0];
+          const nc = c + dir[1];
+          if (
+            nr < 0 ||
+            nc < 0 ||
+            nr === ROWS ||
+            nc === COLS ||
+            rooms[nr][nc] !== INF
+          ) continue;
+
+          rooms[nr][nc] = steps;
+          queue.push([nr, nc]);
+        };
       };
-
     };
   };
 
@@ -67,9 +74,9 @@ var wallsAndGates = function (rooms) {
     for (let c = 0; c < COLS; c++) {
       if (rooms[r][c] === 0) {
         queue.push([r, c]);
-      }
-    }
-  }
+      };
+    };
+  };
 
   bfs(queue);
   return rooms;
