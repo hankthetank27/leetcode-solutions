@@ -9,7 +9,7 @@
 //     void set(String key, String value, int timestamp) Stores the key key with the value value at the given time timestamp.
 //     String get(String key, int timestamp) Returns a value such that set was called previously, with timestamp_prev <= timestamp. If there are multiple such values, it returns the value associated with the largest timestamp_prev. If there are no values, it returns "".
 
- 
+
 
 // Example 1:
 
@@ -28,7 +28,7 @@
 // timeMap.get("foo", 4);         // return "bar2"
 // timeMap.get("foo", 5);         // return "bar2"
 
- 
+
 
 // Constraints:
 
@@ -39,36 +39,36 @@
 //     At most 2 * 105 calls will be made to set and get.
 
 class TimeMap {
-  constructor(){
-      this.store = {};
+  constructor() {
+    this.store = {};
   };
-  
-  set(key, value, timestamp){
-      if (!this.store[key]) this.store[key] = [];
-      this.store[key].push([value, timestamp])
+
+  set(key, value, timestamp) {
+    if (!this.store[key]) this.store[key] = [];
+    this.store[key].push([value, timestamp])
   };
-  
-  get(key, timestamp){
-      if (!this.store[key]) return '';
-      
-      const values = this.store[key];
-      let left = 0, right = values.length - 1;
-      let res = '';
-      
-      while (left <= right){
-          const mid = Math.floor((left + right) / 2);
-          const [ val, currTs ] = values[mid];
-          
-          if (timestamp === currTs) return val;
-          if (timestamp < currTs){
-              right = mid - 1;
-          };
-          if (timestamp > currTs){
-              left = mid + 1;
-              res = val;
-          };
+
+  get(key, timestamp) {
+    if (!this.store[key]) return '';
+
+    const values = this.store[key];
+    let left = 0, right = values.length - 1;
+    let res = '';
+
+    while (left <= right) {
+      const mid = Math.floor((left + right) / 2);
+      const [val, currTs] = values[mid];
+
+      if (timestamp === currTs) return val;
+      if (timestamp < currTs) {
+        right = mid - 1;
       };
-      return res;
+      if (timestamp > currTs) {
+        left = mid + 1;
+        res = val;
+      };
+    };
+    return res;
   };
 };
 
