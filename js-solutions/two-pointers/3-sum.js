@@ -5,7 +5,7 @@
 
 // Notice that the solution set must not contain duplicate triplets.
 
- 
+
 
 // Example 1:
 
@@ -30,7 +30,7 @@
 // Output: [[0,0,0]]
 // Explanation: The only possible triplet sums up to 0.
 
- 
+
 
 // Constraints:
 
@@ -41,30 +41,32 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
- var threeSum = function(nums) {
+const threeSum = function (nums) {
   const res = [];
   nums.sort((a, b) => a - b);
-  
-  for (let i = 0; i < nums.length; i++){
-      if (i !== 0 && nums[i] === nums[i - 1]) continue;
-      
-      let left = i + 1, right = nums.length - 1;
-      
-      while (left < right){
-          const sum = nums[i] + nums[left] + nums[right];
-          
-          if (sum === 0){
-              res.push([nums[i], nums[left], nums[right]]);          
-              
-              do { left++; } while (nums[left] === nums[left - 1] && left < right);
-              
-          } else if (sum < 0){
-              left++;
-          } else if (sum > 0){
-              right--;
-          };
+
+  for (let i = 0; i < nums.length; i++) {
+    if (i !== 0 && nums[i] === nums[i - 1]) continue;
+
+    let left = i + 1, right = nums.length - 1;
+
+    while (left < right) {
+      const sum = nums[i] + nums[left] + nums[right];
+
+      if (sum === 0) {
+        res.push([nums[i], nums[left], nums[right]]);
+
+        do {
+          left++;
+        } while (nums[left] === nums[left - 1] && left < right);
+
+      } else if (sum < 0) {
+        left++;
+      } else if (sum > 0) {
+        right--;
       };
+    };
   };
-  
+
   return res;
 };
