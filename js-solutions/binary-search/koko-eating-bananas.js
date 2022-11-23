@@ -42,7 +42,7 @@
  var minEatingSpeed = function(piles, h) {
     
   const checkHours = (k) => {
-      return h >= piles.reduce((total, p) => total += Math.ceil(p / k), 0);
+    return h >= piles.reduce((total, p) => total += Math.ceil(p / k), 0);
   };
   
   const max = Math.max(...piles);
@@ -53,13 +53,13 @@
   let res = max;
   
   while (l <= r){
-      const k = Math.floor((l + r) / 2);
-      if (checkHours(k)){
-          res = Math.min(k, res);
-          r = k - 1;
-      } else {
-          l = k + 1;
-      }
+    const k = Math.floor((l + r) / 2);
+    if (checkHours(k)){
+      res = Math.min(k, res);
+      r = k - 1;
+    } else {
+      l = k + 1;
+    }
   }
   return res;
 };
