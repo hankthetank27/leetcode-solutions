@@ -28,7 +28,7 @@
 #     -1000 <= Node.val <= 1000
 
 from collections import deque
-from typing import Optional
+from typing import Optional, List
 
 # Definition for a binary tree node.
 class TreeNode:

@@ -42,6 +42,8 @@
  var minEatingSpeed = function(piles, h) {
     
   const checkHours = (k) => {
+    //where total is the sum of hours it takes to eat each pile, such that
+    //the hours taken to eat each pile equal the pile size divided by the banana eating speed, rounded up.
     return h >= piles.reduce((total, p) => total += Math.ceil(p / k), 0);
   };
   
