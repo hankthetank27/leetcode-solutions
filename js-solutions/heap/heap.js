@@ -1,8 +1,11 @@
 class Heap {
   constructor(array = [], compare = (a, b) => a > b){
     this.compare = compare
-    this.size = array.length
     this.heap = this.heapify(array)
+  }
+
+  size(){
+    return this.heap.length
   }
 
   heapify(array){
@@ -14,17 +17,15 @@ class Heap {
 
   heapPush(el){
     this.heap.push(el)
-    this.size++
-    this.siftUp(this.size - 1, this.heap)
+    this.siftUp(this.size() - 1, this.heap)
   }
 
   heapPop(){
-    if (this.size <= 0) return null
+    if (this.size() <= 0) return null
     const maxVal = this.heap[0]
-    this.swap(0, this.size - 1, this.heap)
+    this.swap(0, this.size() - 1, this.heap)
     this.heap.pop()
-    this.size--
-    this.siftDown(0, this.heap, this.size)
+    this.siftDown(0, this.heap, this.size())
     return maxVal
   }
 
@@ -57,13 +58,4 @@ class Heap {
   }
 }
 
-const heap = new Heap([2, 5, 3, 8, 10, 6, 4, 7, 9, 1], (a, b) => a < b)
-console.log(heap)
-heap.heapPush(89)
-heap.heapPush(8)
-console.log(heap.heapPop())
-console.log(heap.heap)
-heap.heapPush(1)
-console.log(heap.heapPop())
-console.log(heap.heap)
-console.log(heap.heapify([10, 20, 89, 1, 4, 100, 55]))
+module.exports = Heap;

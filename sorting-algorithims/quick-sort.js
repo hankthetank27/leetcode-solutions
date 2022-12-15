@@ -24,3 +24,37 @@ function quickSort(nums) {
 
   return [...quickSort(less), pivot, ...quickSort(more)];
 };
+
+
+const quickSortInPlace = (array) => {
+
+  const swap = (i, j) => {
+    [array[i], array[j]] = [array[j], array[i]]
+  }
+
+  const partition = (l, r) => {
+    const pivot = r
+    let partionIdx = l - 1
+    for (let i = l; i <= r - 1; i++){
+      if (array[i] <= array[pivot]){
+        partionIdx++
+        swap(partionIdx, i)
+      }
+    }
+    swap(partionIdx + 1, pivot)
+    return partionIdx + 1
+  }
+
+  const qs = (l, r) => {
+    if (l >= r) return
+    const partionIdx = partition(l, r)
+    qs(l, partionIdx - 1)
+    qs(partionIdx + 1, r)
+  }
+
+  qs(0, array.length - 1)
+  return array
+}
+
+
+console.log(quickSortInPlace([1, 4, 2, 9, 8, 5, 10, 14]))
