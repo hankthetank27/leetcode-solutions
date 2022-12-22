@@ -45,14 +45,14 @@ const quickSortInPlace = (array) => {
     return partionIdx + 1
   }
 
-  const qs = (l, r) => {
+  const sort = (l, r) => {
     if (l >= r) return
     const partionIdx = partition(l, r)
-    qs(l, partionIdx - 1)
-    qs(partionIdx + 1, r)
+    sort(l, partionIdx - 1)
+    sort(partionIdx + 1, r)
   }
 
-  qs(0, array.length - 1)
+  sort(0, array.length - 1)
   return array
 }
 
