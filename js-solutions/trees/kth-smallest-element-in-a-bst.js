@@ -47,7 +47,7 @@
  */
 var kthSmallest = function(root, k) {
   const dfs = (node) => {
-      if (!k || !node) return node
+      if (!node) return node
       const smallest = dfs(node.left)
       k -= 1
       if (k === 0) return node.val
@@ -57,5 +57,5 @@ var kthSmallest = function(root, k) {
           return smallest
       }
   }
-  return dfs(root).val
+  return dfs(root)
 }
