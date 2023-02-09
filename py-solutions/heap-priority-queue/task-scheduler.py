@@ -52,8 +52,9 @@
 #     tasks[i] is upper-case English letter.
 #     The integer n is in the range [0, 100].
 
-from ast import List
-from collections import heapq, Counter
+import heapq
+from typing import List
+from collections import Counter
 
 class Solution:
     def leastInterval(self, tasks: List[str], n: int) -> int:
@@ -74,13 +75,14 @@ class Solution:
 
                     if curr[0] != 0:
                         temp_list.append(curr)
-                    
-                    res += 1
-                else:
-                    if len(temp_list):
-                        res += 1
 
-            for i in range(len(temp_list)):
-                heapq.heappush(max_heap, temp_list[i])
+                    res += 1
+
+                elif temp_list:
+                    res += 1
+
+            for el in temp_list:
+                heapq.heappush(max_heap, el)
 
         return res
+
