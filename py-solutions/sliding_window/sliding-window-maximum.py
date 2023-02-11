@@ -41,7 +41,8 @@
 #     1 <= nums.length <= 105
 #     -104 <= nums[i] <= 104
 #     1 <= k <= nums.length
-
+from typing import List
+import collections
 
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
